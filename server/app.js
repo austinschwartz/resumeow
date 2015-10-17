@@ -7,15 +7,14 @@
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var express = require('express');
-var mongoose = require('mongoose');
-var fs = require('fs');
-var path = require('path');
-var formsAngular = require('forms-angular');
-var errors = require('./components/errors');
-var config = require('./config/environment');
-
-  var auth = require('./auth/auth.service');
+var express = require('express')
+  , mongoose = require('mongoose')
+  , fs = require('fs')
+  , path = require('path')
+  , formsAngular = require('forms-angular')
+  , errors = require('./components/errors')
+  , config = require('./config/environment')
+  , auth = require('./auth/auth.service');
 
 
 // Connect to database

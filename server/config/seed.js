@@ -1,33 +1,140 @@
-/**
- * Populate DB with sample data on server start
- * to disable, edit config/environment/index.js, and set `seedDB: false`
- */
-
 'use strict';
 
-var Thing = require('../api/thing/thing.model');
+var Resume = require('../api/resume/resume.model');
 var User = require('../api/user/user.model');
 
-Thing.find({}).remove(function() {
-  Thing.create({
-    name : 'Development Tools',
-    info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor and Less.'
-  }, {
-    name : 'Server and Client integration',
-    info : 'Built with a powerful and fun stack: MongoDB, Express, AngularJS, and Node (MEAN Stack) with the forms-angular library.'
-  }, {
-    name : 'Smart Build System',
-    info : 'Build system ignores `spec` files, allowing you to keep tests alongside code. Automatic injection of scripts and styles into your index.html'
-  },  {
-    name : 'Modular Structure',
-    info : 'Best practice client and server structures allow for more code reusability and maximum scalability'
-  },  {
-    name : 'Optimized Build',
-    info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
-  },{
-    name : 'Deployment Ready',
-    info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
-  });
+Resume.find({}).remove(function() {
+  Resume.create(
+    {
+      "template": "t1.tex",
+      "name": "kjahsd",
+      "pdfURL": "/pdf/kjahsd.pdf",
+      "userInfo":  {
+        "website":"www.website.com",
+        "name":"Billy Bob",
+        "email":"bob@microsoft.com",
+        "location":"Carmel, IN 46033",
+        "phone":"317-372-0622",
+        "schools":[
+          {
+            "name":"Purdue University",
+            "location":"West Lafayette, IN",
+            "degree":"College of Science, Bachelor of Science Computer Science",
+            "graduating":"Graduating Dec 2015",
+            "gpa":"3.3"
+          }
+        ],
+        "works":[
+          {
+            "name":"Enova International",
+            "location":"Chicago, IL",
+            "position":"Software Engineer Intern",
+            "date":"June 2015 -- August 2015",
+            "lines":[
+              {
+                "line":"Helped to increase percentage of production code covered by unit and behavior tests by developing a code coverage tool integrated heavily with Github and Travis CI"
+              },
+              {
+                "line":"Built the project for internal use, developed with Ruby on Rails and ReactJS + Flux."
+              }
+            ]
+          },
+          {
+            "name":"Interactive Intelligence",
+            "location":"Indianapolis, IN",
+            "position":"Software Engineer Intern",
+            "date":"May 2013 –– January 2015",
+            "lines":[
+              {
+                "line":"Developed an internal automation framework for a social collaboration tool, with a team"
+              },
+              {
+                "line":"Created several utilities still in use at the company, including a rewrite of their existing bug tracking software in AngularJS + node.js that was over 20x faster in performing search queries"
+              }
+            ]
+          },
+          {
+            "name":"Kelly Touch Systems",
+            "location":"Carmel, IN",
+            "position":"Software Developer",
+            "date":"August 2012 –– January 2013",
+            "lines":[
+              {
+                "line":"Maintained large codebase and remotely implemented site features and bug fixes"
+              },
+              {
+                "line":"Worked closely with other developers and attained a working knowledge of development lifecycle"
+              }
+            ]
+          },
+          {
+            "name":"Net Literacy",
+            "location":"Carmel, IN",
+            "position":"Web Designed",
+            "date":"September 2008 –– 2010",
+            "lines":[
+              {
+                "line":"Created several new websites and updated old sites for Net Literacy family of websites"
+              },
+              {
+                "line":"Acted as Webmaster for their entire suite of websites"
+              }
+            ]
+          }
+        ],
+        "projects":[
+          {
+            "name":"Simple Shell",
+            "date":"2015",
+            "desc":"Fully featured shell featuring globbing, environmental variables, piping, and file redirection"
+          },
+          {
+            "name":"FIZ interpreter",
+            "date":"2015",
+            "desc":"Interpreter for a small lispy language called FIZ."
+          },
+          {
+            "name":"Jeopardy Web App (www.austinschwartz.com/jeopardy)",
+            "date":"2013",
+            "desc":"Website where users can play games of Jeopardy with questions and categories pulled from past games (over 200,000 questions). Made with node.js, AngularJS, and MongoDB."
+          }
+        ],
+        "languages":[
+          {
+            "name":"Java"
+          },
+          {
+            "name":"C"
+          },
+          {
+            "name":"Ruby"
+          },
+          {
+            "name":"Javascript"
+          },
+          {
+            "name":"SQL"
+          }
+        ],
+        "technologies":[
+          {
+            "name":"git"
+          },
+          {
+            "name":"Rails"
+          },
+          {
+            "name":"ReactJS"
+          },
+          {
+            "name":"MongoDB"
+          },
+          {
+            "name":"*NIX/OSX"
+          }
+        ]
+      } 
+  })
 });
 
 User.find({}).remove(function() {

@@ -62,7 +62,7 @@ angular.module('resumeowApp', [
       routingService.start(
         {
           html5Mode: true,
-add2fngRoutes: {authenticate: true} , 
+          add2fngRoutes: {authenticate: true} , 
           prefix:'/data',
           routing: 'ngroute'
         }

@@ -2,21 +2,21 @@
 
 angular.module('resumeowApp')
   .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+    $scope.awesomeResumes = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
+    $http.get('/api/resumes').success(function(lastResumes) {
+      $scope.lastResumes = lastResumes;
     });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
+    $scope.addResume = function() {
+      if($scope.newResume === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+      $http.post('/api/resumes', { name: $scope.newResume });
+      $scope.newResume = '';
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
+    $scope.deleteResume = function(resume) {
+      $http.delete('/api/resumes/' + resume._id);
     };
   });
