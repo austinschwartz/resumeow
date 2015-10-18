@@ -1,0 +1,210 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[letterpaper,margin=0.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{mdwlist}
+\usepackage[T1]{fontenc}
+\usepackage{tgpagella}
+\usepackage{textcomp}
+\usepackage{enumitem}
+\usepackage{parskip}
+\pagestyle{empty} 
+\setlength{\tabcolsep}{0em}
+\setlength\parindent{0pt}
+
+% format two pieces of text, one left aligned and one right aligned
+\newcommand{\headerrow}[2]
+{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+    #1 &
+    #2 \\
+\end{tabular*}}
+
+% and the actual content starts here
+\begin{document}
+
+\setlength{\parindent}{0cm}
+
+\begin{center}
+{\LARGE \textbf{ Billy Bob }}
+\\
+317-372-0622\ \ \textbullet
+\ \ bob@microsoft.com
+\\ 
+www.website.com
+\\
+Carmel, IN 46033
+\\
+\end{center}
+\vspace{-2em}
+
+\subsection*{Education}
+\vspace{-0.4em}
+\hrule
+
+\begin{itemize}[label={},leftmargin=*]
+\parskip=0.1em
+
+
+\item
+\headerrow 
+{\textbf{ Purdue University }}
+{\textbf{ West Lafayette, IN }}
+\\
+\headerrow
+{\emph{ College of Science, Bachelor of Science Computer Science }}
+{\emph{ Graduating Dec 2015 }}
+\\
+Major GPA: {\textbf{ 3.3 }}
+
+
+\end{itemize}
+
+\vspace{-1.5em}
+
+\subsection*{Work Experience}
+\vspace{-0.4em}
+\hrule
+
+\begin{itemize}[label={},leftmargin=*]
+\parskip=0.1em
+
+
+\item
+\headerrow
+{\textbf{Enova International}}
+{\textbf{Chicago, IL}}
+\\
+\headerrow
+{\emph{ Software Engineer Intern }}
+{\emph{ June 2015 -- August 2015 }}
+\begin{itemize*}
+
+\item Helped to increase percentage of production code covered by unit and behavior tests by developing a code coverage tool integrated heavily with Github and Travis CI
+
+\item Built the project for internal use, developed with Ruby on Rails and ReactJS + Flux.
+
+\end{itemize*}
+
+\vspace{0.4em}
+
+
+\item
+\headerrow
+{\textbf{Interactive Intelligence}}
+{\textbf{Indianapolis, IN}}
+\\
+\headerrow
+{\emph{ Software Engineer Intern }}
+{\emph{ May 2013 –– January 2015 }}
+\begin{itemize*}
+
+\item Developed an internal automation framework for a social collaboration tool, with a team
+
+\item Created several utilities still in use at the company, including a rewrite of their existing bug tracking software in AngularJS + node.js that was over 20x faster in performing search queries
+
+\end{itemize*}
+
+\vspace{0.4em}
+
+
+\item
+\headerrow
+{\textbf{Kelly Touch Systems}}
+{\textbf{Carmel, IN}}
+\\
+\headerrow
+{\emph{ Software Developer }}
+{\emph{ August 2012 –– January 2013 }}
+\begin{itemize*}
+
+\item Maintained large codebase and remotely implemented site features and bug fixes
+
+\item Worked closely with other developers and attained a working knowledge of development lifecycle
+
+\end{itemize*}
+
+\vspace{0.4em}
+
+
+\item
+\headerrow
+{\textbf{Net Literacy}}
+{\textbf{Carmel, IN}}
+\\
+\headerrow
+{\emph{ Web Designed }}
+{\emph{ September 2008 –– 2010 }}
+\begin{itemize*}
+
+\item Created several new websites and updated old sites for Net Literacy family of websites
+
+\item Acted as Webmaster for their entire suite of websites
+
+\end{itemize*}
+
+\vspace{0.4em}
+
+
+
+
+
+\end{itemize}
+
+
+\vspace{-1.5em}
+\subsection*{Projects}
+\vspace{-0.4em}
+\hrule
+
+\begin{itemize}[label={},leftmargin=*]
+\parskip=0.1em
+
+
+
+\item
+\headerrow
+{\emph{ Simple Shell}}
+{\emph{ 2015}}
+\begin{itemize*}
+\item Fully featured shell featuring globbing, environmental variables, piping, and file redirection
+\end{itemize*}
+
+
+
+\item
+\headerrow
+{\emph{ FIZ interpreter}}
+{\emph{ 2015}}
+\begin{itemize*}
+\item Interpreter for a small lispy language called FIZ.
+\end{itemize*}
+
+
+
+\item
+\headerrow
+{\emph{ Jeopardy Web App (www.austinschwartz.com/jeopardy)}}
+{\emph{ 2013}}
+\begin{itemize*}
+\item Website where users can play games of Jeopardy with questions and categories pulled from past games (over 200,000 questions). Made with node.js, AngularJS, and MongoDB.
+\end{itemize*}
+
+
+
+\end{itemize}
+
+
+\vspace{-.6em}
+\subsection*{Languages \& Technologies}
+\vspace{-0.4em}
+\hrule
+
+\begin{itemize}[leftmargin=*]
+\parskip=0.1em
+
+
+\item  Java  C  Ruby  Javascript  SQL 
+\item  git  Rails  ReactJS  MongoDB  *NIX/OSX 
+\end{itemize}
+
+
+\end{document}
