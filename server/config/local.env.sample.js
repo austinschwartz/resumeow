@@ -9,8 +9,8 @@ module.exports = {
   DOMAIN:           'http://localhost:9000',
   SESSION_SECRET:   'resumeow-secret',
 
-  FACEBOOK_ID:      'app-id',
-  FACEBOOK_SECRET:  'secret',
+  FACEBOOK_ID:      '1698798533698773',
+  FACEBOOK_SECRET:  '4e3e563106c6c3302be107d4774f1e11',
 
   GOOGLE_ID:        'app-id',
   GOOGLE_SECRET:    'secret',

@@ -14,7 +14,15 @@ var express = require('express')
   , formsAngular = require('forms-angular')
   , errors = require('./components/errors')
   , config = require('./config/environment')
-  , auth = require('./auth/auth.service');
+  , auth = require('./auth/auth.service')
+  , bodyParser = require("body-parser")
+  , http = require('http')
+  , util = require('util')
+  , mu   = require('mu2')
+  , fs   = require('fs')
+  , shortid = require ('shortid')
+  , child_process = require('child_process');
+
 
 
 // Connect to database
@@ -29,31 +37,49 @@ if(config.seedDB) { require('./config/seed'); }
 
 // Setup server
 var app = express();
+
 var server = require('http').createServer(app);
 require('./config/express')(app);
 require('./routes')(app);
 
 var DataFormHandler = new (formsAngular)(app, {
-  urlPrefix: '/api/' , JQMongoFileUploader: {}  , authentication: auth.isAuthenticated()
+  urlPrefix: '/api/' , JQMongoFileUploader: {}, authentication: auth.isAuthenticated()
 });
 
-  var modelsPath = path.join(__dirname, 'forms-angular-models');
+
+var modelsPath = path.join(__dirname, 'forms-angular-models');
+
 fs.readdirSync(modelsPath).forEach(function (file) {
   var fname = modelsPath + '/' + file;
   if (fs.statSync(fname).isFile()) {
     DataFormHandler.newResource(require(fname));
-    }
-  });
+  }
+});
+
+//app.use('/pdf', express.static('./client/assets/pdf/'));
+//
+app.get('/pdf/:name', function(req, res) {
+  var filePath = path.resolve('client/assets/pdf/' + req.params.name);
+  res.setHeader('Content-type', 'application/pdf');
+  //fs.createReadStream(filePath).pipe(res).on('end', function(a) { console.log(a); });
+  res.sendFile(filePath);
+});
 
   // All undefined asset or api routes should return a 404
-  app.route('/:url(auth|components|app|bower_components|assets)/*')
+/*
+  app.route('/:url(pdf|auth|components|app|bower_components|assets)/*')
   .get(errors[404]);
+*/
 
-  // All other routes should redirect to the index.html
-  app.route('/*')
-  .get(function(req, res) {
-    res.sendfile(app.get('appPath') + '/index.html');
-    });
+// All other routes should redirect to the index.html
+/*
+app.route('/*')
+.get(function(req, res) {
+  res.sendFile(app.get('appPath') + '/index.html');
+});
+*/
+
+
 
 
 // Start server

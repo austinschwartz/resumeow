@@ -15,8 +15,6 @@ angular.module('resumeowApp', [
 ])
   .config(function ($routeProvider, $httpProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
-
-  
     $httpProvider.interceptors.push('authInterceptor');
   })
 

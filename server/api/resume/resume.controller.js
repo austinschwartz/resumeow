@@ -10,7 +10,14 @@
 'use strict';
 
 var _ = require('lodash');
-var Resume = require('./resume.model');
+var Resume = require('./resume.model')
+  , bodyParser = require("body-parser")
+  , http = require('http')
+  , util = require('util')
+  , mu   = require('mu2')
+  , fs   = require('fs')
+  , shortid = require ('shortid')
+  , child_process = require('child_process');
 
 // Get list of resumes
 exports.index = function(req, res) {
@@ -36,6 +43,41 @@ exports.create = function(req, res) {
     return res.status(201).json(resume);
   });
 };
+
+exports.pdf = function(req, res) {
+  Resume.findById(req.params.id, function (err, resume) {
+    if(err) { return handleError(res, err); }
+    if(!resume) { return res.status(404).send('Not Found'); }
+    var url = req.protocol + '://' + req.get('host');
+    //var postFile = shortid.generate();
+    console.log(resume);
+    //json = JSON.parse(resume);
+    var json = resume;
+    console.log(json);
+    var userInfo = json.userInfo;
+    var template = json.template;
+    var postFile = json.file_name;
+    console.log('building ' + template + " -> " + postFile + ".tex");
+      
+    var texFile = mu.compileAndRender("./templates/" + template, userInfo);
+    var writer = fs.createWriteStream('./temp/' + postFile + '.tex');
+    texFile.pipe(writer, { end: false });
+    texFile.on('end', function() {
+      console.log(__dirname);
+      var child = child_process.exec('TEXINPUTS="./templates:" pdflatex -output-directory ./client/assets/pdf -interaction=nonstopmode ./temp/' + postFile + '.tex', function(error, stdout, stderr) {
+        //console.log(error + "\n" + stdout + "\n" + stderr);
+        });
+      child.on('exit', function() {
+        //return res.send(url + '/assets/pdf/' + postFile + '.pdf');      
+        return res.redirect('/pdf/' + postFile + '.pdf');
+
+      });
+      child.on('error', function(error) {
+        console.log(error);
+      });
+    });
+  }); 
+}
 
 // Updates an existing resume in the DB.
 exports.update = function(req, res) {

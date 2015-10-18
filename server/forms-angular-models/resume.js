@@ -8,12 +8,11 @@ var ResumeSchema = new Schema({
 });
 
 var Resume;
-var modelName = 'Resume';
 
 try {
-  Resume = mongoose.model(modelName);
+  Resume = mongoose.model('Resume');
 } catch(e) {
-  Resume = mongoose.model(modelName, ResumeSchema);
+  Resume = mongoose.model('Resume', ResumeSchema);
 }
 
 module.exports = Resume;

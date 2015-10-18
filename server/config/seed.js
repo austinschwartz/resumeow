@@ -7,7 +7,7 @@ Resume.find({}).remove(function() {
   Resume.create(
     {
       "template": "t1.tex",
-      "name": "kjahsd",
+      "file_name": "kjahsd",
       "pdfURL": "/pdf/kjahsd.pdf",
       "userInfo":  {
         "website":"www.website.com",

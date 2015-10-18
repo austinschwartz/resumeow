@@ -4,15 +4,14 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var ResumeSchema = new Schema({
-  "template": String,
-  "name": String,
-  "pdfURL": String,
+  "file_name": {"type": String, "required": true},
+  "template": {"type": String, "required": true, "enum": ['t1.tex', 't2.tex']},
   "userInfo": {
+    "name": {"type": String, "required": true},
     "website": String,
-    "name": String,
-    "email": String,
-    "location": String,
-    "phone": String,
+    "email": {"type": String, "required": true},
+    "location": {"type": String, "required": true},
+    "phone": {"type": String, "required": true},
     "schools": [{
         "name": String,
         "location": String,
