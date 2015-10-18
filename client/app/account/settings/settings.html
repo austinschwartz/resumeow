@@ -6,10 +6,6 @@
             <h1>Change Password</h1>
         </div>
         <div class="col-sm-12">
-            <p>This simple form uses forms-angular without a mongoose template.  Due to time constraints it doesn't have
-               all the functionality you might expect.  The original form from the upstream branch is commented out,
-               so you can easily revert to it.
-            </p>
             <form class="form" name="form" ng-submit="changePassword(form)" novalidate ng-init="settingsForm=[
                 {name:'password',      type:'password',   required:true, size: 'xxlarge', label:'Current Password'},
                 {name:'newPassword',   type:'password',   required:true, size: 'xxlarge'}
